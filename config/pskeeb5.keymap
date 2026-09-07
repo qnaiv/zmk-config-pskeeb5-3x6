@@ -107,12 +107,12 @@
         //│  Ctrl    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │  - _     │
             &kp LCTRL  HRMR(Z,        X,        C,          V)     &kp B          &kp N      HRML(M,        COMMA,     DOT,      FSLH)    &kp MINUS
         //╰──────────┴──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                       &kp K_POWER  &kp LALT     &kp LGUI   &kp SPACE      &kp SPACE  &tog 3     &kp FSLH   &kp C_PP
+                       &kp K_POWER  &kp LALT     &kp LGUI   &mkp MCLK      &kp LG(W)  &tog 3     &kp FSLH   &kp C_PP
         //                                     ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
-            // sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &rot_msc ROT_MSC_SLT ROT_MSC_SRT>;
-            // Left encoder: horizontal scroll / Right encoder: tab switch (Ctrl+Shift+Tab / Ctrl+Tab)
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            // Left encoder: vertical scroll / Right encoder: tab switch (Ctrl+Shift+Tab / Ctrl+Tab)
+            // Left dial push: wheel click / Right dial push: close tab (Cmd+W)
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         num_layer {
@@ -130,7 +130,7 @@
                        &win_sleep  &trans    &trans     &trans         &trans     &kp N0     &kp DOT       &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         sym_layer {
@@ -148,7 +148,7 @@
                         &trans     &trans    &trans     &trans         &trans       &trans     &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰────────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         comb_layer {
@@ -166,7 +166,7 @@
                         &trans     &trans    &trans     &trans         &trans       &trans     &trans     &trans
         //                                    ╰──────────────┴─────────────╯   ╰──────────────┴───────────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         special_layer {
@@ -184,7 +184,7 @@
                        &trans     &trans    &trans     &trans             &trans     &trans     &trans     &trans
         //                                 ╰─────────────┴──────────╯   ╰──────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         layer_5 {
@@ -199,7 +199,7 @@
                        &to 0      &kp ENTER  &kp ESC    &mkp RCLK      &mkp LCLK  &kp BSPC   &kp SPACE  &kp C_PP
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         layer_6 {
@@ -214,7 +214,7 @@
                        &to 0      &kp ENTER  &kp ESC    &mkp RCLK      &mkp LCLK  &kp BSPC   &kp SPACE  &kp C_PP
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         layer_7 {
@@ -229,7 +229,7 @@
                        &to 0      &kp ENTER  &kp ESC    &mkp RCLK      &mkp LCLK  &kp BSPC   &kp SPACE  &kp C_PP
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         layer_8 {
@@ -244,7 +244,7 @@
                        &to 0      &kp ENTER  &kp ESC    &mkp RCLK      &mkp LCLK  &kp BSPC   &kp SPACE  &kp C_PP
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         layer_9 {
@@ -259,7 +259,7 @@
                        &to 0      &kp ENTER  &kp ESC    &mkp RCLK      &mkp LCLK  &kp BSPC   &kp SPACE  &kp C_PP
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         layer_10 {
@@ -274,7 +274,7 @@
                        &to 0      &kp ENTER  &kp ESC    &mkp RCLK      &mkp LCLK  &kp BSPC   &kp SPACE  &kp C_PP
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         layer_11 {
@@ -289,7 +289,7 @@
                        &to 0      &kp ENTER  &kp ESC    &mkp RCLK      &mkp LCLK  &kp BSPC   &kp SPACE  &kp C_PP
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         layer_12 {
@@ -304,7 +304,7 @@
                        &to 0      &kp ENTER  &kp ESC    &mkp RCLK      &mkp LCLK  &kp BSPC   &kp SPACE  &kp C_PP
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         layer_13 {
@@ -319,7 +319,7 @@
                        &to 0      &kp ENTER  &kp ESC    &mkp RCLK      &mkp LCLK  &kp BSPC   &kp SPACE  &kp C_PP
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         layer_14 {
@@ -334,7 +334,7 @@
                        &to 0      &kp ENTER  &kp ESC    &mkp RCLK      &mkp LCLK  &kp BSPC   &kp SPACE  &kp C_PP
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         // Auto Mouse Layer: activated automatically by trackpoint movement (see &mouse_ps2_input_listener below)
@@ -348,10 +348,10 @@
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┼──────────┼──────────┼─────────────────┤
             &trans     &trans     &trans     &trans     &trans     &trans         &trans         &trans     &trans     &trans     &trans     &trans
         //╰──────────┴──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┴──────────┴──────────┴─────────────────╯
-                       &trans     &trans     &trans     &mkp RCLK      &trans     &trans     &trans     &trans
+                       &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────────┴──────────╯
             >;
-            sensor-bindings = <&rot_msc ROT_MSC_SLT ROT_MSC_SRT &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
     };
 };
