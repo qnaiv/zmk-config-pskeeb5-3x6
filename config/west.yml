@@ -6,6 +6,9 @@ manifest:
     - name: zmk
       remote: klesh
       revision: pskeeb5_3x6
-      import: app/west.yml
+      import:
+        file: app/west.yml
+        name-blocklist:
+          - zmk-ydxc02-driver
   self:
     path: config
