@@ -348,12 +348,28 @@
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────────┬──────────┬──────────┬──────────┬──────────┬─────────────────╮
             &trans     &trans     &trans     &trans     &trans     &trans         &trans         &trans     &trans     &trans     &trans     &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┼──────────┼──────────┼─────────────────┤
-        //│          │          │ RCLICK   │ MCLICK   │ LCLICK   │          │   │ Back         │          │          │          │ Forward  │                 │
-            &trans     &trans     &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans         &kp C_AC_BACK  &trans     &trans     &trans     &kp C_AC_FORWARD  &trans
+        //│          │ SCROLL   │ RCLICK   │ MCLICK   │ LCLICK   │          │   │ Back         │          │          │          │ Forward  │                 │
+            &trans     &mo 16     &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans         &kp C_AC_BACK  &trans     &trans     &trans     &kp C_AC_FORWARD  &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┼──────────┼──────────┼─────────────────┤
             &trans     &trans     &trans     &trans     &trans     &trans         &trans         &trans     &trans     &trans     &trans     &trans
         //╰──────────┴──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┴──────────┴──────────┴─────────────────╯
                        &trans     &trans     &trans     &mkp RCLK      &trans     &trans     &trans     &trans
+        //                                 ╰──────────┴──────────╯   ╰──────────────┴──────────╯
+            >;
+            sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
+        };
+
+        // Held from within mouse_layer (pos13/"A") to turn trackpoint movement into scrolling
+        mouse_scroll_layer {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────────┬──────────┬──────────┬──────────┬──────────┬─────────────────╮
+            &trans     &trans     &trans     &trans     &trans     &trans         &trans         &trans     &trans     &trans     &trans     &trans
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┼──────────┼──────────┼─────────────────┤
+            &trans     &trans     &trans     &trans     &trans     &trans         &trans         &trans     &trans     &trans     &trans     &trans
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┼──────────┼──────────┼─────────────────┤
+            &trans     &trans     &trans     &trans     &trans     &trans         &trans         &trans     &trans     &trans     &trans     &trans
+        //╰──────────┴──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┴──────────┴──────────┴─────────────────╯
+                       &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────────┴──────────╯
             >;
             sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
@@ -364,8 +380,12 @@
 #ifdef MOUSE_PS2_DT_PRESENT
 // Auto Mouse Layer: enable layer 15 (mouse_layer) while the trackpoint is
 // being used, and disable it again after 0.5s of trackpoint inactivity.
+// scroll-layer 16: while layer 16 (mouse_scroll_layer) is the highest
+// active layer - i.e. while holding pos13/"A" inside mouse_layer -
+// trackpoint movement scrolls instead of moving the pointer.
 &mouse_ps2_input_listener {
     layer-toggle = <15>;
     layer-toggle-timeout-ms = <500>;
+    scroll-layer = <16>;
 };
 #endif
