@@ -109,10 +109,10 @@
         //│  Shift   │  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │ ; :      │  Enter   │
             &kp LSHFT  HRML(A,        S,         D,         F)     &lt 3 G         &lt 3 H    HRMR(J,        K,         L,        SEMI)    &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Ctrl    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │  - _     │
-            &kp LCTRL  HRMR(Z,        X,        C,          V)     &kp B          &kp N      HRML(M,        COMMA,     DOT,      FSLH)    &kp MINUS
+        //│  Ctrl    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ' "      │  - _     │
+            &kp LCTRL  HRMR(Z,        X,        C,          V)     &kp B          &kp N      HRML(M,        COMMA,     DOT,      SQT)    &kp MINUS
         //╰──────────┴──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                       &kp K_POWER  &kp LALT     &kp LGUI   &lt 1 SPACE      &lt 1 SPACE  &mo 3     &kp SQT   &kp C_PP
+                       &kp K_POWER  &kp LALT     &kp LGUI   &lt 1 SPACE      &lt 1 SPACE  &mo 3     &kp FSLH   &kp C_PP
         //                                     ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
             // Left encoder: vertical scroll / Right encoder: tab switch (Ctrl+Shift+Tab / Ctrl+Tab)
