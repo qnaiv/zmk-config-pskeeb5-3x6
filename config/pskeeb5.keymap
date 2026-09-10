@@ -65,11 +65,6 @@
             key-positions = <3 4>;
             bindings = <&kp TAB>;
         };
-        combo_esc {
-            timeout-ms = <50>;
-            key-positions = <0 1>;
-            bindings = <&kp ESC>;
-        };
         middle_click {
             timeout-ms = <50>;
             key-positions = <39 40>;
@@ -112,7 +107,7 @@
         //│  Ctrl    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ' "      │  - _     │
             &kp LCTRL  HRMR(Z,        X,        C,          V)     &kp B          &kp N      HRML(M,        COMMA,     DOT,      SQT)    &kp MINUS
         //╰──────────┴──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                       &kp K_POWER  &kp LALT     &kp LGUI   &lt 1 SPACE      &lt 1 SPACE  &mo 3     &kp FSLH   &kp C_PP
+                       &kp K_POWER  &kp LALT     &kp LGUI   &lt 1 SPACE      &lt 1 ESC  &mo 3     &kp FSLH   &kp C_PP
         //                                     ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
             // Left encoder: vertical scroll / Right encoder: tab switch (Ctrl+Shift+Tab / Ctrl+Tab)
