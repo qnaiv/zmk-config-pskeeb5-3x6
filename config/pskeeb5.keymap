@@ -381,7 +381,7 @@
 // trackpoint movement scrolls instead of moving the pointer.
 &mouse_ps2_input_listener {
     layer-toggle = <15>;
-    layer-toggle-timeout-ms = <500>;
+    layer-toggle-timeout-ms = <300>;
     scroll-layer = <16>;
 };
 #endif
