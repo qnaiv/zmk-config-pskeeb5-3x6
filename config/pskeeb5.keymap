@@ -390,21 +390,25 @@
         };
 
         // Auto Mouse Layer: activated automatically by trackpoint movement (see &mouse_ps2_input_listener below)
-        // Everything not listed below is intentionally &none - this layer only
-        // provides pointer buttons and scroll; typing keys pass through untouched
-        // because pressing them doesn't deactivate the layer (see keymap comment below).
+        // Everything not listed below is &trans (falls through to the base
+        // layer) rather than &none, so ordinary typing/modifiers (e.g.
+        // holding Alt and tapping Tab repeatedly for app switching) keep
+        // working normally while the trackpoint is in use. &none would
+        // silently swallow the keypress instead of sending it - it does NOT
+        // "pass through" despite looking harmless. Only the pointer buttons
+        // and scroll keys below get real overrides.
         mouse_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────────┬──────────┬──────────┬──────────┬──────────┬─────────────────╮
         //│          │          │          │          │ SCRL UP  │          │   │              │          │          │          │          │                 │
-            &none      &none      &none      &none      &msc MSC_SCRL_UP  &none      &none          &none      &none      &none      &none      &none
+            &trans     &trans     &trans     &trans     &msc MSC_SCRL_UP  &trans      &trans          &trans      &trans      &trans      &trans      &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┼──────────┼──────────┼─────────────────┤
         //│          │          │          │          │ SCRL DN  │          │   │              │          │          │          │          │                 │
-            &none      &none      &none      &none      &msc MSC_SCRL_DOWN  &none    &none          &none      &none      &none      &none      &none
+            &trans     &trans     &trans     &trans     &msc MSC_SCRL_DOWN  &trans    &trans          &trans      &trans      &trans      &trans      &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┼──────────┼──────────┼─────────────────┤
-            &none      &none      &none      &none      &none      &none          &none          &none      &none      &none      &none      &none
+            &trans     &trans     &trans     &trans     &trans     &trans          &trans          &trans      &trans      &trans      &trans      &trans
         //╰──────────┴──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┴──────────┴──────────┴─────────────────╯
-                       &none      &none      &none      &none          &mkp LCLK  &mo_mkp 3 RCLK  &mkp MCLK  &none
+                       &trans     &trans     &trans     &trans          &mkp LCLK  &mo_mkp 3 RCLK  &mkp MCLK  &trans
         //                                 ╰──────────┴──────────╯   ╰──────────────┴──────────╯
             >;
             sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
@@ -424,7 +428,10 @@
 // exits the Auto Mouse Layer right away - this happens on the physical
 // press regardless of how the hold-tap at pos41 (see mo_mkp below)
 // eventually resolves, so holding pos41 for Nav-layer navigation (IJKL as
-// arrows) also gets a clean exit from the mouse layer first.
+// arrows) also gets a clean exit from the mouse layer first. Any other key
+// (e.g. Alt+Tab) still resolves against mouse_layer's own &trans bindings
+// for that keypress (ZMK locks in the active layer at press time), so it
+// types normally even though the layer itself is already exiting.
 &mouse_ps2_input_listener {
     layer-toggle = <15>;
     layer-toggle-timeout-ms = <10000>;
