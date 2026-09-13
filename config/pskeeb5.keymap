@@ -364,12 +364,15 @@
 #ifdef MOUSE_PS2_DT_PRESENT
 // Auto Mouse Layer: enable layer 15 (mouse_layer) while the trackpoint is
 // being used, and disable it again after 10s of trackpoint inactivity.
-// Pressing an unrelated key (e.g. to type) is NOT wired to force the layer
-// off - doing so via &to/&mo would desync this driver's internal
-// "layer enabled" state from ZMK's actual layer state and permanently break
-// re-activation until reflash, so we rely on the timeout only.
+// excluded-positions (from our patched kb_zmk_ps2_mouse_trackpoint_driver
+// fork, see config/west.yml): pressing any key position NOT listed here
+// while mouse_layer is active deactivates it immediately, without waiting
+// for the timeout. The listed positions are the mouse_layer buttons/scroll
+// keys themselves (pos4/16 scroll, pos40/41/42 click), so using them keeps
+// the layer active instead of kicking you out of it.
 &mouse_ps2_input_listener {
     layer-toggle = <15>;
     layer-toggle-timeout-ms = <10000>;
+    excluded-positions = <4 16 40 41 42>;
 };
 #endif

@@ -2,6 +2,8 @@ manifest:
   remotes:
     - name: klesh
       url-base: https://github.com/klesh
+    - name: qnaiv
+      url-base: https://github.com/qnaiv
   projects:
     - name: zmk
       remote: klesh
@@ -10,5 +12,10 @@ manifest:
         file: app/west.yml
         name-blocklist:
           - zmk-ydxc02-driver
+    # Override: use our fork with the excluded-positions (exit-on-keypress) patch
+    # instead of klesh's upstream version imported above.
+    - name: kb_zmk_ps2_mouse_trackpoint_driver
+      remote: qnaiv
+      revision: main
   self:
     path: config
