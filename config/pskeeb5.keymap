@@ -23,6 +23,13 @@
 #define ROT_MSC_SLT MOVE_X(-ROT_MSC_VAL)
 #define ROT_MSC_SRT MOVE_X(ROT_MSC_VAL)
 
+// Auto Mouse Layer scroll keys (R/F). Default SCRL_UP/SCRL_DOWN from
+// dt-bindings/zmk/mouse.h use ZMK_POINTING_DEFAULT_SCRL_VAL (10 per tick),
+// which felt too slow - bumped to 30 (3x) here.
+#define MSC_SCRL_VAL 30
+#define MSC_SCRL_UP MOVE_Y(MSC_SCRL_VAL)
+#define MSC_SCRL_DOWN MOVE_Y(-MSC_SCRL_VAL)
+
 
 #include <behaviors/mouse_setting.dtsi>
 #include <dt-bindings/zmk/mouse_settings.h>
@@ -99,11 +106,9 @@
 
     combos {
         compatible = "zmk,combos";
-        combo_tab {
-            timeout-ms = <50>;
-            key-positions = <3 4>;
-            bindings = <&kp TAB>;
-        };
+        // NOTE: no E+R -> Tab combo here anymore. Tab already lives directly
+        // on pos0, and rolling "er"/"re" while typing kept misfiring the
+        // combo and sending a spurious Tab instead of the letters.
         combo_esc {
             timeout-ms = <50>;
             key-positions = <0 1>;
@@ -389,10 +394,10 @@
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────────┬──────────┬──────────┬──────────┬──────────┬─────────────────╮
         //│          │          │          │          │ SCRL UP  │          │   │              │          │          │          │          │                 │
-            &none      &none      &none      &none      &msc SCRL_UP  &none      &none          &none      &none      &none      &none      &none
+            &none      &none      &none      &none      &msc MSC_SCRL_UP  &none      &none          &none      &none      &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┼──────────┼──────────┼─────────────────┤
         //│          │          │          │          │ SCRL DN  │          │   │              │          │          │          │          │                 │
-            &none      &none      &none      &none      &msc SCRL_DOWN  &none    &none          &none      &none      &none      &none      &none
+            &none      &none      &none      &none      &msc MSC_SCRL_DOWN  &none    &none          &none      &none      &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┼──────────┼──────────┼─────────────────┤
             &none      &none      &none      &none      &none      &none          &none          &none      &none      &none      &none      &none
         //╰──────────┴──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┴──────────┴──────────┴─────────────────╯
