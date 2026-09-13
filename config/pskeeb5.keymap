@@ -75,6 +75,19 @@
             // global-quick-tap;
             bindings = <&mo>, <&kp>;
         };
+        // Same as lt (hold = momentary layer, default hold-preferred flavor)
+        // but tap sends a mouse button instead of a keycode. Used on the
+        // Auto Mouse Layer's right-click key so holding it acts as the
+        // normal Fn/Nav key (see pos41 in mouse_layer) instead of clicking.
+        mo_mkp: mo_or_mouse_click {
+            display-name = "Momentary Layer or Mouse Click";
+            compatible = "zmk,behavior-hold-tap";
+            label = "MO_MKP";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            bindings = <&mo>, <&mkp>;
+        };
         rot_msc: sensor_rotate_msc {
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
@@ -383,7 +396,7 @@
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┼──────────┼──────────┼─────────────────┤
             &none      &none      &none      &none      &none      &none          &none          &none      &none      &none      &none      &none
         //╰──────────┴──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┴──────────┴──────────┴─────────────────╯
-                       &none      &none      &none      &none          &mkp LCLK  &mkp RCLK  &mkp MCLK  &none
+                       &none      &none      &none      &none          &mkp LCLK  &mo_mkp 3 RCLK  &mkp MCLK  &none
         //                                 ╰──────────┴──────────╯   ╰──────────────┴──────────╯
             >;
             sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
@@ -399,8 +412,11 @@
 // while mouse_layer is active deactivates it immediately, without waiting
 // for the timeout. pos4/16 (scroll) and pos40 (left click) stay in the
 // list so scrolling/dragging keeps the layer active; pos41/42 (right/
-// middle click) are intentionally NOT listed, so a right- or middle-click
-// exits the Auto Mouse Layer immediately afterwards.
+// middle click) are intentionally NOT listed, so pressing either one
+// exits the Auto Mouse Layer right away - this happens on the physical
+// press regardless of how the hold-tap at pos41 (see mo_mkp below)
+// eventually resolves, so holding pos41 for Nav-layer navigation (IJKL as
+// arrows) also gets a clean exit from the mouse layer first.
 &mouse_ps2_input_listener {
     layer-toggle = <15>;
     layer-toggle-timeout-ms = <10000>;
