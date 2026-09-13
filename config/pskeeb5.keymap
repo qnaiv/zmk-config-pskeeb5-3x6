@@ -353,7 +353,7 @@
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┼──────────┼──────────┼─────────────────┤
             &none      &none      &none      &none      &none      &none          &none          &none      &none      &none      &none      &none
         //╰──────────┴──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────────┼──────────┼──────────┴──────────┴──────────┴─────────────────╯
-                       &none      &none      &none      &mkp LCLK      &mkp RCLK  &mkp MCLK  &none      &none
+                       &none      &none      &none      &none          &mkp LCLK  &mkp RCLK  &mkp MCLK  &none
         //                                 ╰──────────┴──────────╯   ╰──────────────┴──────────╯
             >;
             sensor-bindings = <&rot_msc ROT_MSC_SUP ROT_MSC_SDN &inc_dec_kp LC(LS(TAB)) LC(TAB)>;
