@@ -31,8 +31,9 @@
 ### Baseレイヤー
 - 左端: Tab / Shift / Ctrl、右端: Bksp / Enter / `-`(6列化に伴う追加列)
 - ホームロウはホールドタップ: 薬指(S/L)=Alt、中指(D/K)=Ctrl、人差し指(F/J)=Shift。**Cmdだけは小指ではなくG/Hキー**(タップでG/H、ホールドでCmd)
-- 親指クラスター: `Power` / `Alt` / `Cmd` / `Space(長押しでNum)` / `Esc(長押しでNum)` / `Nav(長押し)` / `/` / `再生・一時停止`
+- 親指クラスター: `Power` / `Alt` / `Cmd` / `Space(長押しでNum)` / `Space(長押しでNum)` / `Nav(長押し)` / `/` / `再生・一時停止`
 - Hold-Tapには`require-prior-idle-ms = 150ms`を設定し、高速タイピング中の意図しない修飾キー暴発を抑制
+- **Positional Home Row Mods**: ホームロウのホールドタップ(`hml`/`hmr`)は、`hold-trigger-key-positions`で**反対側の手のキー位置のみ**をhold判定のトリガーにし、`hold-trigger-on-release`でキーを離したタイミングで判定するよう設定。これにより同じ手だけで完結するタイピング(例: "bad "のような単語)はtap優先で安定し、反対の手との組み合わせ(実際のショートカット、例: D長押し+右手側のSpace同時押しでCtrl+Space)は確実にhold判定になる。半角/全角切り替え(D長押し+Space同時押し)でDがそのままtap入力されてしまう不具合の対策として導入([参考記事](https://zenn.dev/tomori_k/articles/9793e7300488f6))
 
 ### ロータリーエンコーダー
 - 左: 回転=縦スクロール
