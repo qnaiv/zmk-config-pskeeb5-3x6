@@ -67,6 +67,11 @@
             key-positions = <3 4>;
             bindings = <&kp TAB>;
         };
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <0 1>;
+            bindings = <&kp ESC>;
+        };
         middle_click {
             timeout-ms = <50>;
             key-positions = <39 40>;
@@ -368,12 +373,13 @@
 // excluded-positions (from our patched kb_zmk_ps2_mouse_trackpoint_driver
 // fork, see config/west.yml): pressing any key position NOT listed here
 // while mouse_layer is active deactivates it immediately, without waiting
-// for the timeout. The listed positions are the mouse_layer buttons/scroll
-// keys themselves (pos4/16 scroll, pos40/41/42 click), so using them keeps
-// the layer active instead of kicking you out of it.
+// for the timeout. pos4/16 (scroll) and pos40 (left click) stay in the
+// list so scrolling/dragging keeps the layer active; pos41/42 (right/
+// middle click) are intentionally NOT listed, so a right- or middle-click
+// exits the Auto Mouse Layer immediately afterwards.
 &mouse_ps2_input_listener {
     layer-toggle = <15>;
     layer-toggle-timeout-ms = <10000>;
-    excluded-positions = <4 16 40 41 42>;
+    excluded-positions = <4 16 40>;
 };
 #endif
