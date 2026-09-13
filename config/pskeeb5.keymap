@@ -7,9 +7,9 @@
 #include <dt-bindings/zmk/bt.h>
 
 // Home row mods macro
-// k1=pinky, k2=ring, k3=middle, k4=index -> Cmd, Alt, Ctrl, Shift
-#define HRML(k1,k2,k3,k4) &ht LGUI k1  &ht LALT k2  &ht LCTRL k3  &ht LSHFT k4
-#define HRMR(k1,k2,k3,k4) &ht RSHFT k1  &ht RCTRL k2  &ht RALT k3  &ht RGUI k4
+// k1=ring, k2=middle, k3=index -> Alt, Ctrl, Shift (Cmd lives on G/H instead of pinky)
+#define HRML(k1,k2,k3) &ht LALT k1  &ht LCTRL k2  &ht LSHFT k3
+#define HRMR(k1,k2,k3) &ht RSHFT k1  &ht RCTRL k2  &ht RALT k3
 #define LCS(keycode) APPLY_MODS(MOD_LCTL | MOD_LSFT, keycode)
 #define LCG(keycode) APPLY_MODS(MOD_LCTL | MOD_LGUI, keycode)
 
@@ -103,11 +103,11 @@
         //│  Tab     │  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │  Bksp    │
             &kp TAB    &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P      &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Shift   │  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │ ; :      │  Enter   │
-            &kp LSHFT  HRML(A,        S,         D,         F)     &lt 3 G         &lt 3 H    HRMR(J,        K,         L,        SEMI)    &kp ENTER
+        //│  Shift   │  A       │  S       │  D       │  F       │  G(Cmd)  │   │  H(Cmd)  │  J       │  K       │  L       │ ; :      │  Enter   │
+            &kp LSHFT  &kp A      HRML(S,        D,         F)     &ht LGUI G      &ht RGUI H HRMR(J,        K,         L)               &kp SEMI  &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Ctrl    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ' "      │  - _     │
-            &kp LCTRL  HRMR(Z,        X,        C,          V)     &kp B          &kp N      HRML(M,        COMMA,     DOT,      SQT)    &kp MINUS
+            &kp LCTRL  HRMR(Z,        X,        C)         &kp V      &kp B          &kp N      &kp M      HRML(COMMA,     DOT,      SQT)    &kp MINUS
         //╰──────────┴──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
                        &kp K_POWER  &kp LALT     &kp LGUI   &lt 1 SPACE      &lt 1 ESC  &mo 3     &kp FSLH   &kp C_PP
         //                                     ╰──────────┴──────────╯   ╰──────────┴──────────╯
